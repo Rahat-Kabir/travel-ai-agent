@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import '../models/models.dart';
 import 'flight_results_card.dart';
 
@@ -57,12 +58,50 @@ class MessageBubble extends StatelessWidget {
                       bottomLeft: !isUser ? const Radius.circular(4) : null,
                     ),
                   ),
-                  child: Text(
-                    message.content,
-                    style: TextStyle(
-                      color: isUser ? Colors.white : Colors.black87,
-                      fontSize: 16,
-                      height: 1.4,
+                  child: MarkdownBody(
+                    data: message.content,
+                    shrinkWrap: true,
+                    styleSheet: MarkdownStyleSheet(
+                      p: TextStyle(
+                        color: isUser ? Colors.white : Colors.black87,
+                        fontSize: 16,
+                        height: 1.4,
+                      ),
+                      h1: TextStyle(
+                        color: isUser ? Colors.white : Colors.black87,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        height: 1.2,
+                      ),
+                      h2: TextStyle(
+                        color: isUser ? Colors.white : Colors.black87,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        height: 1.2,
+                      ),
+                      h3: TextStyle(
+                        color: isUser ? Colors.white : Colors.black87,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        height: 1.2,
+                      ),
+                      strong: TextStyle(
+                        color: isUser ? Colors.white : Colors.black87,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      em: TextStyle(
+                        color: isUser ? Colors.white : Colors.black87,
+                        fontStyle: FontStyle.italic,
+                      ),
+                      a: TextStyle(
+                        color: isUser ? Colors.white70 : Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                      code: TextStyle(
+                        color: isUser ? Colors.white : Colors.black87,
+                        backgroundColor: isUser ? Colors.white.withOpacity(0.1) : Colors.grey.withOpacity(0.1),
+                        fontFamily: 'monospace',
+                      ),
                     ),
                   ),
                 ),
