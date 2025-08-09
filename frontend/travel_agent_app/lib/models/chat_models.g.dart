@@ -38,6 +38,11 @@ ChatResponse _$ChatResponseFromJson(Map<String, dynamic> json) => ChatResponse(
       : FlightSearchResponse.fromJson(
           json['flight_results'] as Map<String, dynamic>,
         ),
+  hotelResults: json['hotel_results'] == null
+      ? null
+      : HotelSearchResponse.fromJson(
+          json['hotel_results'] as Map<String, dynamic>,
+        ),
   extractedParams: json['extracted_params'] == null
       ? null
       : FlightSearchParams.fromJson(
@@ -56,6 +61,7 @@ Map<String, dynamic> _$ChatResponseToJson(ChatResponse instance) =>
       'message': instance.message,
       'thread_id': instance.threadId,
       'flight_results': instance.flightResults,
+      'hotel_results': instance.hotelResults,
       'extracted_params': instance.extractedParams,
       'needs_clarification': instance.needsClarification,
       'missing_params': instance.missingParams,

@@ -205,6 +205,9 @@ class _ChatScreenState extends State<ChatScreen> {
                       flightResults: index == chatProvider.messages.length - 1 
                         ? chatProvider.lastFlightResults 
                         : null,
+                      hotelResults: index == chatProvider.messages.length - 1 
+                        ? chatProvider.lastHotelResults 
+                        : null,
                     )
                       .animate()
                       .fadeIn(duration: 300.ms)

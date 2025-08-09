@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'flight_models.dart';
+import 'hotel_models.dart';
 
 part 'chat_models.g.dart';
 
@@ -59,6 +60,8 @@ class ChatResponse {
   final String threadId;
   @JsonKey(name: 'flight_results')
   final FlightSearchResponse? flightResults;
+  @JsonKey(name: 'hotel_results')
+  final HotelSearchResponse? hotelResults;
   @JsonKey(name: 'extracted_params')
   final FlightSearchParams? extractedParams;
   @JsonKey(name: 'needs_clarification')
@@ -70,6 +73,7 @@ class ChatResponse {
     required this.message,
     required this.threadId,
     this.flightResults,
+    this.hotelResults,
     this.extractedParams,
     this.needsClarification = false,
     this.missingParams = const [],
