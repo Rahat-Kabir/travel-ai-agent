@@ -2,3 +2,4 @@
 export 'api_models.dart';
 export 'chat_models.dart';
 export 'flight_models.dart';
+export 'hotel_models.dart';

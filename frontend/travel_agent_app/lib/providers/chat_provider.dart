@@ -10,6 +10,7 @@ class ChatProvider extends ChangeNotifier {
   bool _isConnected = true;
   String? _currentThreadId;
   FlightSearchResponse? _lastFlightResults;
+  HotelSearchResponse? _lastHotelResults;
   String? _lastError;
 
   // Getters
@@ -18,6 +19,7 @@ class ChatProvider extends ChangeNotifier {
   bool get isConnected => _isConnected;
   String? get currentThreadId => _currentThreadId;
   FlightSearchResponse? get lastFlightResults => _lastFlightResults;
+  HotelSearchResponse? get lastHotelResults => _lastHotelResults;
   String? get lastError => _lastError;
 
   // Initialize thread ID
@@ -68,6 +70,11 @@ class ChatProvider extends ChangeNotifier {
       // Store flight results if available
       if (response.flightResults != null) {
         _lastFlightResults = response.flightResults;
+      }
+
+      // Store hotel results if available
+      if (response.hotelResults != null) {
+        _lastHotelResults = response.hotelResults;
       }
 
       // Update connection status
@@ -129,6 +136,7 @@ class ChatProvider extends ChangeNotifier {
   void clearMessages() {
     _messages.clear();
     _lastFlightResults = null;
+    _lastHotelResults = null;
     _lastError = null;
     _currentThreadId = const Uuid().v4();
     notifyListeners();

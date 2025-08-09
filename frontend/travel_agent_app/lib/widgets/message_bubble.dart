@@ -3,15 +3,18 @@ import 'package:intl/intl.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import '../models/models.dart';
 import 'flight_results_card.dart';
+import 'hotel_results_card.dart';
 
 class MessageBubble extends StatelessWidget {
   final ChatMessage message;
   final FlightSearchResponse? flightResults;
+  final HotelSearchResponse? hotelResults;
 
   const MessageBubble({
     super.key,
     required this.message,
     this.flightResults,
+    this.hotelResults,
   });
 
   @override
@@ -144,6 +147,15 @@ class MessageBubble extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 40),
               child: FlightResultsCard(flightResults: flightResults!),
+            ),
+          ],
+          
+          // Hotel results (only for assistant messages)
+          if (!isUser && hotelResults != null) ...[
+            const SizedBox(height: 12),
+            Padding(
+              padding: const EdgeInsets.only(left: 40),
+              child: HotelResultsCard(hotelResults: hotelResults!),
             ),
           ],
         ],
